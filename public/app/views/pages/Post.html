@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+
+    
+    <script src="../../js/lib/angular.min.js"></script>
+    <script src="../../js/modules/module.js"></script>
+    <script src="../../js/lib/ngStorage.min.js"></script>
+    <script type='text/javascript' src='/public/node_modules/angular-loading-bar/build/loading-bar.min.js'></script>
+    <script src="../../../app/js/services/mainFact.js"></script>
+    <script src="../../js/controllers/blogController.js"></script>
+
+    
+    <title>Write Your thoughts</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="http://netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet">
+    <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+    <script src="http://netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+    <style type="text/css">
+        .contact-form{ margin-top:15px;}
+.contact-form .textarea{ min-height:220px; resize:none;}
+.form-control{ box-shadow:none; border-color:#eee; height:49px;}
+.form-control:focus{ box-shadow:none; border-color:#00b09c;}
+.form-control-feedback{ line-height:50px;}
+.main-btn{ background:#00b09c; border-color:#00b09c; color:#fff;}
+.main-btn:hover{ background:#00a491;color:#fff;}
+.form-control-feedback {
+line-height: 50px;
+top: 0px;
+}
+</style>
+  
+</head>
+<body ng-app="myapp" ng-controller="blogCtrl">
+<link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/jquery.bootstrapvalidator/0.5.2/css/bootstrapValidator.min.css"/>
+<script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/jquery.bootstrapvalidator/0.5.2/js/bootstrapValidator.min.js"></script>
+<div class="container">
+	<div class="row">
+		<!-- <form id="contact-form" class="contact-form"> -->
+                <form action='http://zaloonz.in:8081/uploadBlogImage' method="POST" enctype="multipart/form-data">
+                    <!-- <input type="text" name="name" placeholder="confirm your email" style="width:300px">  -->
+                    <div class="row">
+                		<div class="col-md-6">
+                  		<div class="form-group">
+                            <input type="text" class="form-control" name="Name" autocomplete="off" id="Name" placeholder="Name" ng-model="User.name" required>
+                  		</div>
+                  	</div>
+                    	<div class="col-md-6">
+                  		<div class="form-group">
+                            <input type="email" class="form-control" name="email" autocomplete="off" id="email" placeholder="email" ng-model="User.email" required>
+                  		</div>
+                      </div>
+                      <div class="col-md-6">
+                        <div class="form-group">
+                          <input type="text" class="form-control" name="title" autocomplete="off" id="" placeholder="Title" ng-model="User.postTitle" required>
+                        </div>
+                    </div>
+                  	</div>
+                  	<div class="row">
+                  		<div class="col-md-12">
+                  		<div class="form-group">
+                            <textarea class="form-control textarea" rows="3" name="Post" id="Post" placeholder="Write your own thoughts" ng-model="User.detailedPost" required></textarea>
+                  		</div>
+                  	</div>
+                    </div>
+                    <div class="row">
+                    <div class="col-md-12">
+                            <input type="file" id="file" name="data">
+                            <br>
+                            <br>
+                            
+                  <button  class="btn main-btn pull-right" ng-click="postBLog(User)" ng-value"myVar=true">Submit</button>
+                    </div>
+                  </div>
+                <!-- </form> -->
+                <!-- <div ng-show="myVar">  -->
+                     
+                        <!-- <br>
+                        <br> -->
+              
+            <!-- <br>
+          <button type="submit" >upload</button>
+        </form> -->
+    <!-- </div> -->
+
+
+	</div>
+</div>
+<script type="text/javascript">
+$('#contact-form').bootstrapValidator({
+//        live: 'disabled',
+        message: 'This value is not valid',
+        feedbackIcons: {
+            valid: 'glyphicon glyphicon-ok',
+            invalid: 'glyphicon glyphicon-remove',
+            validating: 'glyphicon glyphicon-refresh'
+        },
+        fields: {
+            Name: {
+                validators: {
+                    notEmpty: {
+                        message: 'The Name is required and cannot be empty'
+                    }
+                }
+            },
+            email: {
+                validators: {
+                    notEmpty: {
+                        message: 'The email address is required'
+                    },
+                    emailAddress: {
+                        message: 'The email address is not valid'
+                    }
+                }
+            },
+            Message: {
+                validators: {
+                    notEmpty: {
+                        message: 'The Message is required and cannot be empty'
+                    }
+                }
+            }
+        }
+    });
+</script>
+</body>
+</html>

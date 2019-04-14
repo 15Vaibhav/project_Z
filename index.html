@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<title>Home</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="/public/assets/css/bootstrap.min.css">
+	<link rel="stylesheet" href="/public/assets/css/custom.css">
+	<script src="/public/assets/js/jquery.min.js"></script>
+	<script src="/public/assets/js/popper.min.js"></script>
+	<script src="/public/assets/js/bootstrap.min.js"></script>
+	<script defer src="https://use.fontawesome.com/releases/v5.0.9/js/all.js" integrity="sha384-8iPTk2s/jMVj81dnzb/iFR2sdA7u06vHJyyLlAd4snFpCl/SnyUjRrbdJsw1pGIl"
+	    crossorigin="anonymous"></script>
+	<link href="/public/assets/css/select2.min.css" rel="stylesheet" />
+	<script src="/public/assets/js/select2.min.js"></script>
+	<script src="/public/app/js/lib/angular.min.js"></script>
+	<link rel='stylesheet' href='/public/node_modules/angular-loading-bar/build/loading-bar.min.css' type='text/css' media='all' />
+    <script type='text/javascript' src='/public/node_modules/angular-loading-bar/build/loading-bar.min.js'></script>
+    <script src="/public/app/js/lib/ngStorage.min.js"></script>
+	<script src="/public/app/js/modules/module.js"></script>
+	<script src="/public/app/js/services/mainFact.js"></script>
+	<script src="/public/app/js/controllers/mainCtrl.js"></script>
+
+</head>
+
+<body ng-app="myapp" ng-controller="myctrl">
+	<div class="container-fluid  top-bar top-bar-home">
+		<div class="container cont-mobile">
+			<a href="#" class="link">Products for Businesses</a>
+			<a href="#" class="link">We're hiring</a>
+		</div>
+	</div>
+	<div class="container-fluid  sub-header">
+		<div class="container cont-mobile">
+			<div class="">
+				<a href="#app" class="">
+					<span class="mobile-icon">
+						<i class="fas fa-mobile-alt"></i>
+					</span>
+					<span class="pl10">Get the App</span>
+				</a>
+			</div>
+		</div>
+	</div>
+	<div class="container-fluid header-bg pa0">
+		<div style="background: rgba(0,0,0,0.0);">
+			<div class="container search-container cont-mobile">
+				<div class="home-logo">
+					<img src="/public/assets/imgs/home-logo.png" />
+				</div>
+				<h1 class="home-title">Find the best Salon in Delhi NCR </h1>
+				<form class="form-inline row">
+					<div class="col-md-2 offset-md-2 col-sm-12 col-xs-12 pull-right srch-outer-top">
+						<input type="text" ng-model="placeName" id="pac-input" ng-change="callCity()" placeholder="Enter a city " ng-model="myVar"
+						    ng-init="myVar=true">
+					</div>
+					<div class="col-md-5 col-sm-12 col-xs-12 srch-outer-top-sec">
+						<input type="text" list="saloon" ng-model="getsalon" ng-disabled="loading" ng-change="getSaloon()" placeholder="Search for saloon">
+						<datalist id="saloon" ng-if="!myVar">
+							<option ng-repeat="x in saloonArr">{{x.saloonName}}</option>
+						</datalist>
+						<div>
+							<datalist id="saloon" ng-model="getsalon" ng-if="myVar">
+								<option ng-repeat="x in saloonAr">{{x}}</option>
+							</datalist>
+						</div>
+					</div>
+					<div class="col-md-3 col-sm-12 col-xs-12 home-search-button-center">
+						<a class="home-search-button" href="" ng-click="Search()">Search</a>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+	<div class="container cont-mobile">
+
+		<div class="row">
+			<div class="col-md-12 pt50 pl-0 pr-0 mb-3">
+				<h2>
+					<span class="segment-heading">Collections</span>
+					<span class="segment_sub_heading">
+						Explore curated lists of top Salon, beauty parlour in and around Delhi NCR, based on trends </span>
+				</h2>
+			</div>
+		</div>
+
+
+		<div class="row segment-cont">
+			<div class="col-md-4 pl-0">
+				<a href="#" class="segment-home">
+
+					<div class="row m-0">
+						<div class="col-md-5 pa0">
+							<img src="/public/assets/imgs/Luxurious.png" class="img-fluid" alt="">
+						</div>
+						<div class="col-md-7 pt-3 pl-3 pr-2">
+							<div class="home-card-heading" ng-click="pkt()"> Luxurious</div>
+							<div class="black-text mb-3"> The most Luxurious Salon in Delhi,NCR  </div>
+						</div>
+					</div>
+				</a>
+			</div>
+                <div class="col-md-4 pl-0">
+				<a href="#" class="segment-home">
+
+					<div class="row m-0">
+						<div class="col-md-5 pa0">
+							<img src="/public/assets/imgs/Pocket friendy.png" class="img-fluid" alt="">
+						</div>
+						<div class="col-md-7 pt-3 pl-3 pr-2">
+							<div class="home-card-heading" ng-click="pkt()"> Pocket Friendly</div>
+							<div class="black-text mb-3"> The most popular Salon in Delhi,NCR this week </div>
+						</div>
+					</div>
+				</a>
+			</div>
+
+
+			<div class="col-md-4 pl-0">
+				<a href="#" class="segment-home">
+
+					<div class="row m-0">
+						<div class="col-md-5 pa0">
+							<img src="/public/assets/imgs/Trending.png" class="img-fluid" alt="">
+						</div>
+						<div class="col-md-7 pt-3 pl-3 pr-2">
+							<div class="home-card-heading" ng-click="trending()">Trending</div>
+							<div class="black-text mb-3"> Trending salon in Delhi,NCR this week </div>
+						</div>
+					</div>
+				</a>
+			</div>
+
+		</div>
+
+
+
+
+
+
+		<div class="row">
+
+
+			<div class="col-md-12 pt50 pl-0 pr-0">
+				<h2>
+					<span class="segment-heading">Popular localities in Delhi, NCR </span>
+
+					<span class="segment_sub_heading">
+						Explore Salon by locality </span>
+				</h2>
+			</div>
+			<div class="row cat-segment p-4 ml-0 mr-0 col-md-12">
+				<ul class="row city-segment">
+					<li>
+						<a ng-click="pop(my)" ng-init="my = 'North Delhi'">North Delhi</a>
+					</li>
+					<li>
+						<a ng-click="pop(South)" ng-init="South = 'South Delhi'">South Delhi</a>
+					</li>
+					<li>
+						<a ng-click="pop(East)" ng-init="East='East Delhi'">East Delhi</a>
+					</li>
+					<li class="col-s-8">
+						<a ng-click="pop(West)" ng-init="West ='West Delhi'">West Delhi</a>
+					</li>
+					<li>
+						<a ng-click="pop(Center)" ng-init="Center ='Center Delhi'">Center Delhi</a>
+					</li>
+					<li>
+						<a ng-click="pop(Fa)" ng-init="Fa ='Faridabad'">Faridabad</a>
+					</li>
+					<li>
+						<a>More are coming...</a>
+					</li>
+				</ul>
+			</div>
+		</div>
+        <div class="row">
+                <div class="row cat-segment p-4 mt-3 ml-0 mr-0 col-md-12">
+				<div class="col-md-6 text-center">
+				<img src="/public/assets/imgs/feed-app.jpg" class="img-fluid" />
+				</div>
+				<div class="col-md-6">
+				<h2>
+				<span class="segment-heading mb-3">Looking for the Salon Feed? Get the app!</span>
+                <span class="segment_sub_heading mb-2">Follow us to see their reviews and photos in your Feed, and discover great new Salon! </span>
+				</h2>
+				<p>We'll send you a link, open it on your phone to download the app</p>
+				<form>
+				<div class="form-group row mr10 ml-0">
+				<input type="text" class="form-control home-inp-right col-md-2" id="" placeholder="+91">
+				<input type="text" class="form-control home-inp-mid col-md-6" id="sendMessage"  ng-model="number" placeholder="Enter Phone Number">
+				<a class="form-control home-inp-left col-md-4 green-btn text-center" id="" ng-click="SendMessage(number)">Text App Link </a>
+                </div>
+				</form>
+				<form>
+				<div class="form-group row mr10 ml-0">
+                <input type="text" class="form-control home-inp-right col-md-8" id="" placeholder="Enter Your Email">
+				<a class="form-control home-inp-left col-md-4 green-btn text-center" id="">Email App Link </a>
+                </div>
+				</form>
+				<ul class="app-logo" id="app">
+				<li>
+				<a href="https://itunes.apple.com/in/app/zaloonz-look-book-dazzle/id1358130455?mt=8" target="_blank" class="img-fluid">
+				<img src="/public/assets/imgs/applestore.png" />
+				</a>
+				</li>
+				<li>
+				<a href="https://play.google.com/store/apps/details?id=in.zaloonz.zaloonzcustomer" target="_blank" class="img-fluid">
+				<img src="/public/assets/imgs/googleplay.png" />
+				</a>
+				</li>
+				</ul>
+				</div>
+
+			</div>
+		</div>
+
+
+
+	</div>
+
+	<div class="container-fluid footer">
+		<div class="container cont-mobile">
+			<div class="mt30 mb30 text-center">
+				<a href="">
+					<img src="/public/assets/imgs/logo-footer.png" alt="">
+				</a>
+			</div>
+			<div class="footer-divider"></div>
+			<div class="row">
+				<div class="col-md-8">
+					<ul class="footer-list">
+						<li>
+							<a href="/public/app/views/pages/privacypolicy.html" target="_blank">Privacy</a>
+						</li>
+						<li>
+							<a href="/public/app/views/pages/terms&cond.html" target="_blank">Terms</a>
+						</li>
+						<li>
+							<a href="/public/app/views/pages/blog.html" target="_blank">Blogs</a>
+						</li>
+					</ul>
+				</div>
+				<div class="col-md-4 text-right pt7">
+					<a class="icon" href="https://www.google.com/url?q=https://www.facebook.com/zaloonz/&sa=D&source=hangouts&ust=1528619713556000&usg=AFQjCNHvPdPFfoVPv1RIx8EDWU3uTwZcuQ"
+					    target="_blank">
+						<i class="fab fa-facebook-square"></i>
+					</a>
+					<a class="icon" href="https://www.google.com/url?q=https://twitter.com/zaloonz&sa=D&source=hangouts&ust=1528619713555000&usg=AFQjCNF5OgH69lXicp9_J0IKbGfyeZVOwA"
+					    target="_blank">
+						<i class="fab fa-twitter-square"></i>
+					</a>
+					<a class="icon" href="https://www.google.com/url?q=https://www.instagram.com/zaloonz.in/&sa=D&source=hangouts&ust=1528619713555000&usg=AFQjCNGWpDmcMXmNuXZJDEXBpwhBpht4Zg"
+					    target="_blank">
+						<i class="fab fa-instagram"></i>
+					</a>
+
+				</div>
+			</div>
+			<div class="footer-divider"></div>
+			<div class="footer-msg">All trademarks are properties of their respective owners. © 2018-2018 - Sachi Engineering Pvt Ltd. All rights reserved.
+			</div>
+		</div>
+	</div>
+	<script>
+		// In your Javascript (external .js resource or <script> tag)
+		$(document).ready(function () {
+
+			var sWidth = $(window).width();
+
+			if (sWidth < 1200 && sWidth > 768) {
+
+				$('.cont-mobile').removeClass('container');
+				$('.cont-mobile').addClass('container-fluid');
+			} else if (sWidth < 768) {
+
+				$('.cont-mobile').removeClass('container-fluid');
+				$('.cont-mobile').addClass('container');
+			} else {}
+
+			$('#js-example-basic-single').select2();
+			$(".srch-outer-top .location_placeholder").html("<i class='fas fa-location-arrow'></i>");
+			$(".srch-outer-top-sec .location_placeholder").html("<i class='fa fa-search'></i>")
+		});
+
+		function formatState(state) {
+			if (!state.id) {
+				return state.text;
+			}
+			var baseUrl = "/publicassets/imgs/icon";
+			var $state = $(
+				'<span><img src="' + baseUrl + '/' + state.element.value.toLowerCase() + '.png" class="img-flag" /> ' + state.text +
+				'</span>'
+			);
+			return $state;
+		};
+
+		$(".js-example-templating").select2({
+			templateResult: formatState
+		});
+	</script>
+	<script>
+		function initAutocomplete() {
+			var input = document.getElementById('pac-input');
+			var options = {
+				types: ['(cities)'],
+				componentRestrictions: {
+					country: "in"
+				}
+			}
+			var searchBox = new google.maps.places.Autocomplete(input, options);
+
+			return;
+
+		}
+	</script>
+	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDAGh2EOR1gsTxr7GgR-W9zTgcvEqPJMVg&libraries=places&callback=initAutocomplete"
+	    async defer></script>
+
+</body>
+
+</html>

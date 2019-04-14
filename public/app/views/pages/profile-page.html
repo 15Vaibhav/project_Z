@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Home</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="../../../assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../../assets/css/custom.css">
+    <link rel="stylesheet" href="../../../assets/css/cust.css">
+    <script src="../../../assets/js/jquery.min.js"></script>
+    <script src="../../../assets/js/popper.min.js"></script>
+    <script src="../../../assets/js/bootstrap.min.js"></script>
+    <script defer src="https://use.fontawesome.com/releases/v5.0.9/js/all.js" integrity="sha384-8iPTk2s/jMVj81dnzb/iFR2sdA7u06vHJyyLlAd4snFpCl/SnyUjRrbdJsw1pGIl"
+        crossorigin="anonymous"></script>
+    <link href="../../../assets/css/select2.min.css" rel="stylesheet">
+    <script src="../../../assets/js/select2.min.js"></script>
+    <script src="../../js/lib/angular.min.js"></script>
+    <link rel='stylesheet' href='/public/node_modules/angular-loading-bar/build/loading-bar.min.css' type='text/css' media='all' />
+<script type='text/javascript' src='/public/node_modules/angular-loading-bar/build/loading-bar.min.js'></script>
+    <script src="../../js/lib/ngStorage.min.js"></script>
+    <!-- <script src="https://maps.googleapis.com/maps/api/js?/sensor=false"></script> -->
+    <script src="../../js/modules/module.js"></script>
+    <script src="../../js/services/mainFact.js"></script>
+    <script src="../../js/controllers/mainCtrl.js"></script>
+    <script src="../../js/controllers/profileController.js"></script>
+</head>
+
+<body ng-app="myapp">
+    <div class="container-fluid  top-bar">
+        <div class="container">
+            <a href="#" class="link">Products for Businesses</a>
+            <a href="#" class="link">We're hiring</a>
+        </div>
+    </div>
+    <div class="container-fluid  header-outer">
+        <div class="container">
+            <div class="col-md-12">
+                <nav class="navbar navbar-expand-sm">
+                    <div class="logo-mobile">
+                        <a class="navbar-brand" href="#">
+                            <img src="../../../assets/imgs/logo.png" alt="">
+                        </a>
+                    </div>
+                    <!-- <form class="form-inline col-md-12" ng-controller="myctrl">
+                        <div class="col-md-2 offset-md-2 col-sm-12 col-xs-12 pull-right srch-outer-top">
+                            <input type="text" ng-model="placeName" id="pac-input" placeholder="Enter a city" ng-change="callCity()" list="location"
+                                ng-model="myVar" ng-init="myVar=true">
+                            <datalist id="location">
+                                <option ng-repeat="x in loclArr">{{x.description}}</option>
+                            </datalist>
+                        </div>
+                        <div class="col-md-5 col-sm-12 col-xs-12 srch-outer-top-sec">
+                            <input type="text" list="saloon" ng-model="getsalon" ng-change="getSaloon()">
+                            <datalist id="saloon" ng-if="!myVar">
+                                <option ng-repeat="x in saloonArr">{{x.saloonName}}</option>
+                            </datalist>
+                            <datalist id="saloon" ng-change="getSaloon()" ng-model="getsalon" ng-if="myVar">
+                                <option ng-repeat="x in saloonAr">{{x}}</option>
+                            </datalist>
+                        </div>
+                        <div class="col-md-3 col-sm-12 col-xs-12 home-search-button-center">
+                            <a class="home-search-button border-white" href="" ng-init="Search()" ng-click="Search()">Search</a>
+                        </div>
+                    </form> -->
+
+            </div>
+        </div>
+        </nav>
+    </div>
+    </div>
+    <div class="container-fluid  sub-header">
+        <div class="container">
+            <div class="col-md-12">
+                <a href="#" class="">
+                    <span class="mobile-icon">
+                        <i class="fas fa-mobile-alt"></i>
+                    </span>
+                    <span class="pl10">Get the App</span>
+                </a>
+            </div>
+        </div>
+    </div>
+    <div class="container-fluid ">
+        <div class="container">
+            <div class="col-md-12">
+                <div class="breadcrumb-sm">
+                    <ul>
+                        <li>
+                            <a href="index.html">Home </a>
+                        </li>
+                        <i class="fas fa-angle-right"></i>
+                        <li>
+                            <a href="profle.html">Profile</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8" ng-controller="profileCtrl" ng-init="getSaloon1()">
+                <div class="segment-bg-gray">
+                    <div class="progressive_img_loaded">
+                        <img src="../../../assets/imgs/header.jpg" class="img-fluid img-radius" />
+                    </div>
+                    <div class="row pa10">
+                        <div class="col-md-8">
+                            <h1>
+                                <a class="salon-name" href="">{{saloonName}}</a>
+                            </h1>
+                            <p class="salon-location">
+                                <span>
+                                    <a href="">{{hno}}</a>
+                                </span>
+                                <span>
+                                    <a href="">{{locality}}</a>
+                                </span>
+                                <span>
+                                    <a href="">{{city}}</a>
+                                </span>
+                            </p>
+                        </div>
+                        <div class="col-md-4 float-right">
+                            <div class="vote-box">
+                                <div class="vote">
+                                    4.7
+                                    <span>/5</span>
+                                </div>
+                                <div class="votes-count">234 Votes</div>
+                            </div>
+                        </div>
+                        <div class="divider"></div>
+                        <div class="col-md-12">
+                            <div class="post-tag">
+                                <i></i>{{saloonType}} </div>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="segment">
+                    <div class="row pa10 h2-mb5">
+                        <div class="col-sm-4">
+                            <h2>Phone Numbers</h2>
+                            <span class="font18 bold zgreen display-block">{{mobileNumber}}</span>
+                            <h2>Alternate Numbers</h2>
+                            <div ng-if="alternateNumber">
+                                <div ng-repeat="x in alternateNumber">
+                                    <span class="font18 bold zgreen display-block">{{x}}</span>
+                                </div>
+                            </div>
+                            <span class="light-text display-block font-14">Booking recommended </span>
+                            <h2 class="mt30">MoreInfo</h2>
+                            <ul class="More-info">
+                                <a class="servies-link">Home Service: {{}}</a>
+                                <br> Special For:
+                                <div ng-repeat="x in specialFor">
+                                    <a class="servies-link"> {{x}}</a>
+                                    <br>
+                                </div>
+                                <br> Brand Use:
+                                <div ng-repeat="x in brands">
+                                    <a class="servies-link"> {{x}}</a>
+                                    <br>
+                                </div>
+                                <br>
+                            </ul>
+                        </div>
+                        <div class="col-sm-4">
+                            <h2 class="mobile-mt30">
+                                Opening hours
+                                <span class="open">Open Now</span>
+                                <!--<span class="close-now">Close</span>-->
+                            </h2>
+                            <span class="black-text"> Today 11:30AM to 12 Midnight</span>
+                            <span class="display-block">
+                                <a class="servies-link" href="">See more</a>
+                            </span>
+                            <span class="light-text"> Happy Hours: Sunday to Friday 12pm-9pm </span>
+                            <h2 class="mt30">Address </h2>
+                            <span class="black-text"> SCF 7-8, 1st Floor, Block F, BRS Nagar, Ludhiana</span>
+                            <div class="">
+                                <a href="">
+                                    <img src="../../../assets/imgs/map.jpg" class="img-thumbnail" width="150px" alt="">
+                                </a>
+                            </div>
+                        </div>
+                        <div class="col-sm-4">
+                        </div>
+                    </div>
+                </div>
+                <div class="segment">
+                    <div class="row pa10">
+                        <div class="col-md-12">
+                            <h2>Photo</h2>
+                        </div>
+                        <ul id="lightgallery" class="list-unstyled row">
+                            <li class="col-md-3 mt10" data-src="../../../assets/imgs/1.jpg">
+                                <a href="">
+                                    <img class="img-thumbnail" src="../../../assets/imgs/1.jpg" />
+                                </a>
+                            </li>
+                            <li class="col-md-3 mt10" data-src="../../../assets/imgs/2.jpg">
+                                <a href="">
+                                    <img class="img-thumbnail" src="../../../assets/imgs/2.jpg" />
+                                </a>
+                            </li>
+                            <li class="col-md-3 mt10" data-src="imgs/3.jpg">
+                                <a href="">
+                                    <img class="img-thumbnail" src="../../../assets/imgs/1.jpg" />
+
+                                </a>
+                            </li>
+                            <li class="col-md-3 mt10" data-src="imgs/1.jpg">
+                                <a href="">
+                                    <img class="img-thumbnail" src="../../../assets/imgs/1.jpg" />
+                                </a>
+                            </li>
+
+                        </ul>
+
+
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="row">
+                    <div class="col-md-12 sponsored">Sponsored & Popular </div>
+                    <div class="col-md-6 ">
+                        <div class="segment">
+                            <div class="position-r">
+                                <img src="../../../assets/imgs/5.jpg" class="img-fluid sponsored-img-height" alt="">
+                                <div class="position-a sponsored-rating">4.1</div>
+                            </div>
+                            <div class="pa10 text12 nowrap">
+                                <a href="">Pirates Of Grill</a>
+                                <br> GURDEV NAGAR, LUDHIANA North Indian, Mughlai
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 ">
+                        <div class="segment">
+                            <div class="position-r">
+                                <img src="../../../assets/imgs/5.jpg" class="img-fluid sponsored-img-height" alt="">
+                                <div class="position-a sponsored-rating">4.1</div>
+                            </div>
+                            <div class="pa10 text12 nowrap">
+                                <a href="">Pirates Of Grill</a>
+                                <br> GURDEV NAGAR, LUDHIANA North Indian, Mughlai
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 ">
+                        <div class="segment">
+                            <div class="position-r">
+                                <img src="../../../assets/imgs/5.jpg" class="img-fluid sponsored-img-height" alt="">
+                                <div class="position-a sponsored-rating">4.1</div>
+                            </div>
+                            <div class="pa10 text12 nowrap">
+                                <a href="">Pirates Of Grill</a>
+                                <br> GURDEV NAGAR, LUDHIANA North Indian, Mughlai
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 ">
+                        <div class="segment">
+                            <div class="position-r">
+                                <img src="../../../assets/imgs/5.jpg" class="img-fluid sponsored-img-height" alt="">
+                                <div class="position-a sponsored-rating">4.1</div>
+                            </div>
+                            <div class="pa10 text12 nowrap">
+                                <a href="">Pirates Of Grill</a>
+                                <br> GURDEV NAGAR, LUDHIANA North Indian, Mughlai
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="segment">
+                    <div class="pa10">
+                        <h2>Nearby Saloon </h2>
+                        <div class="divider"></div>
+                        <div class="nearby-list">
+                            <div class="nearby-list-rating">3.8</div>
+                            <div class="nearby-list-img">
+                                <img src="../../../assets/imgs/1.jpg" alt="">
+                            </div>
+                            <div class="nearby-list-heading  nowrap">Sunny salon</div>
+                            <div class="nearby-list-text  nowrap">BRS Nagar, Ludhiana </div>
+                        </div>
+                        <div class="nearby-list">
+                            <div class="nearby-list-rating">4.3</div>
+                            <div class="nearby-list-img">
+                                <img src="../../../assets/imgs/2.jpg" alt="">
+                            </div>
+                            <div class="nearby-list-heading  nowrap">VKS salon</div>
+                            <div class="nearby-list-text  nowrap">BRS Nagar, Ludhiana </div>
+                        </div>
+                        <div class="nearby-list">
+                            <div class="nearby-list-rating">3.9</div>
+                            <div class="nearby-list-img">
+                                <img src="../../../assets/imgs/3.jpg" alt="">
+                            </div>
+                            <div class="nearby-list-heading  nowrap">Lovely Beauty parlour </div>
+                            <div class="nearby-list-text  nowrap">BRS Nagar, Ludhiana </div>
+                        </div>
+                        <div class="nearby-list">
+                            <div class="nearby-list-rating">3.5</div>
+                            <div class="nearby-list-img">
+                                <img src="../../../assets/imgs/4.jpg" alt="">
+                            </div>
+                            <div class="nearby-list-heading  nowrap">salon </div>
+                            <div class="nearby-list-text  nowrap">BRS Nagar, Ludhiana </div>
+                        </div>
+                        <div class="nearby-list">
+                            <div class="nearby-list-rating">4.1</div>
+                            <div class="nearby-list-img">
+                                <img src="../../../assets/imgs/6.jpg" alt="">
+                            </div>
+                            <div class="nearby-list-heading  nowrap">salon </div>
+                            <div class="nearby-list-text  nowrap">BRS Nagar, Ludhiana </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="segment">
+                    <div class="pa10">
+                        <div class="text-center getapp-head">Get the app</div>
+                        <div class="text-center text12">See Service and photos for nearby salon and
+                            <br> bookmark your favorite places on the go </div>
+                        <div class="text-center app-img">
+                            <img src="../../../assets/imgs/app-sidebar.jpg" width="140px" alt="">
+                        </div>
+                        <div class="getapp-footer">
+                            <div>
+
+                                <form>
+                                    <div class="form-group row ml10 mr10">
+                                        <input type="text" class="form-control col-md-3" id="" placeholder="+91">
+                                        <input type="text" class="form-control col-md-9" id="" placeholder="Enter Phone Number">
+                                    </div>
+                                </form>
+
+                            </div>
+
+                            <a href="#" class="red-button-full"> Text App Link </a>
+                            <div class="clearfix"></div>
+                            <div class="row mtb10">
+                                <div class="col text-center">
+                                    <a href="#">
+                                        <img src="../../../assets/imgs/applestore.png" width="100px" alt="">
+                                    </a>
+                                </div>
+                                <div class="col text-center">
+                                    <a href="#">
+                                        <img src="../../../assets/imgs/googleplay.png" width="100px" alt="">
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container-fluid footer">
+        <div class="container">
+            <div class="mt30 mb30 text-center">
+                <a href="">
+                    <img src="../../../assets/imgs/logo-footer.png" alt="">
+                </a>
+            </div>
+            <div class="footer-divider"></div>
+            <div class="row">
+                <div class="col-md-8">
+                    <ul class="footer-list">
+                        <li>
+                            <a href="/public/app/views/pages/privacypolicy.html" target="_blank">Privacy</a>
+                        </li>
+                        <li>
+                            <a href="/public/app/views/pages/terms&cond.html" target="_blank">Terms</a>
+                        </li>
+                        <li>
+                            <a href="#">Sitemap</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="col-md-4 text-right pt7">
+                    <a class="icon" href="https://www.google.com/url?q=https://www.facebook.com/zaloonz/&sa=D&source=hangouts&ust=1528619713556000&usg=AFQjCNHvPdPFfoVPv1RIx8EDWU3uTwZcuQ"
+                        target="_blank">
+                        <i class="fab fa-facebook-square"></i>
+                    </a>
+                    <a class="icon" href="https://www.google.com/url?q=https://twitter.com/zaloonz&sa=D&source=hangouts&ust=1528619713555000&usg=AFQjCNF5OgH69lXicp9_J0IKbGfyeZVOwA"
+                        target="_blank">
+                        <i class="fab fa-twitter-square"></i>
+                    </a>
+                    <a class="icon" href="https://www.google.com/url?q=https://www.instagram.com/zaloonz.in/&sa=D&source=hangouts&ust=1528619713555000&usg=AFQjCNGWpDmcMXmNuXZJDEXBpwhBpht4Zg"
+                        target="_blank">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                </div>
+            </div>
+            <div class="footer-divider"></div>
+            <div class="footer-msg">All trademarks are properties of their respective owners. © 2018- Sachi Engineering Pvt Ltd. All rights reserved.</div>
+        </div>
+    </div>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('#lightgallery').lightGallery();
+        });
+    </script>
+    <script src="https://cdn.jsdelivr.net/picturefill/2.3.1/picturefill.min.js"></script>
+    <script src="../../../assets/js/lightgallery-all.min.js"></script>
+    <script src="../../../assets/js/jquery.mousewheel.min.js"></script>
+
+    <script>
+        // In your Javascript (external .js resource or <script> tag)
+        $(document).ready(function () {
+
+            var sWidth = $(window).width();
+
+            if (sWidth < 1200 && sWidth > 768) {
+
+                $('.cont-mobile').removeClass('container');
+                $('.cont-mobile').addClass('container-fluid');
+            } else if (sWidth < 768) {
+
+                $('.cont-mobile').removeClass('container-fluid');
+                $('.cont-mobile').addClass('container');
+            }
+            else { }
+
+            $('#js-example-basic-single').select2();
+            $(".srch-outer-top .location_placeholder").html("<i class='fas fa-location-arrow'></i>");
+            $(".srch-outer-top-sec .location_placeholder").html("<i class='fa fa-search'></i>")
+        });
+        function formatState(state) {
+            if (!state.id) {
+                return state.text;
+            }
+            var baseUrl = "imgs/icon";
+            var $state = $(
+                '<span><img src="' + baseUrl + '/' + state.element.value.toLowerCase() + '.png" class="img-flag" /> ' + state.text + '</span>'
+            );
+            return $state;
+        };
+
+        $(".js-example-templating").select2({
+            templateResult: formatState
+        });
+
+
+
+    </script>
+    <script>
+        function initAutocomplete() {
+            var input = document.getElementById('pac-input');
+            var options = {
+                types: ['(cities)'],
+                componentRestrictions: { country: "in" }
+            }
+            var searchBox = new google.maps.places.Autocomplete(input, options);
+
+            return;
+
+        }
+
+    </script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDAGh2EOR1gsTxr7GgR-W9zTgcvEqPJMVg&libraries=places&callback=initAutocomplete"
+        async defer></script>
+
+</body>
+
+</html>

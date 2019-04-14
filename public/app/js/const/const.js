@@ -1,0 +1,1 @@
+const Message ="this is download link for ios https://itunes.apple.com/in/app/zaloonz-look-book-dazzle/id1358130455?mt=8 and for android is https://play.google.com/store/apps/details?id=in.zaloonz.zaloonzcustomer"

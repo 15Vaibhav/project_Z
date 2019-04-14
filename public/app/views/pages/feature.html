@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Home</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="../../../assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../../assets/css/custom.css">
+    <link rel="stylesheet" href="../../../assets/css/cust.css">
+    <script src="../../../assets/js/jquery.min.js"></script>
+    <script src="../../../assets/js/popper.min.js"></script>
+    <script src="../../../assets/js/bootstrap.min.js"></script>
+    <script defer src="https://use.fontawesome.com/releases/v5.0.9/js/all.js" integrity="sha384-8iPTk2s/jMVj81dnzb/iFR2sdA7u06vHJyyLlAd4snFpCl/SnyUjRrbdJsw1pGIl"
+        crossorigin="anonymous"></script>
+    <link href="../../../assets/css/select2.min.css" rel="stylesheet">
+    <script src="../../../assets/js/select2.min.js"></script>
+    <script src="../../js/lib/angular.min.js"></script>
+    <link rel='stylesheet' href='/public/node_modules/angular-loading-bar/build/loading-bar.min.css' type='text/css' media='all'    />
+    <script type='text/javascript' src='/public/node_modules/angular-loading-bar/build/loading-bar.min.js'></script>
+    <script src="../../js/lib/ngStorage.min.js"></script>
+    <script src="../../js/modules/module.js"></script>
+    <script src="../../js/services/mainFact.js"></script>
+    <script src="../../js/controllers/mainCtrl.js"></script>
+    <script src="../../js/controllers/featureCtrl.js"></script>
+</head>
+
+<body ng-app="myapp">
+    <div class="container-fluid  top-bar">
+        <div class="container">
+            <a href="#app" class="link">Products for Businesses</a>
+            <a href="#" class="link">We're hiring</a>
+        </div>
+    </div>
+    <div class="container-fluid  header-outer">
+        <div class="container">
+            <div class="col-md-12">
+                <nav class="navbar navbar-expand-sm">
+                    <div class="logo-mobile">
+                        <a class="navbar-brand" href="#">
+                            <img src="../../../assets/imgs/logo.png" alt="">
+                        </a>
+                    </div>
+                    <form class="form-inline col-md-12" ng-controller="myctrl">
+                        <div class="col-md-2 offset-md-2 col-sm-12 col-xs-12 pull-right srch-outer-top">
+                            <input type="text" ng-model="placeName" ng-change="callCity()" id="pac-input" placeholder="Enter a city" ng-model="myVar"
+                                ng-init="myVar=true">
+
+                        </div>
+                        <div class="col-md-5 col-sm-12 col-xs-12 srch-outer-top-sec">
+                            <input type="text" list="saloon" ng-model="getsalon" ng-disabled="loading" ng-change="getSaloon()" placeholder="Enter a saloon">
+                            <datalist id="saloon" ng-if="!myVar">
+                                <option ng-repeat="x in saloonArr">{{x.saloonName}}</option>
+                            </datalist>
+                            <datalist id="saloon" ng-change="getSaloon()" ng-model="getsalon" ng-if="myVar">
+                                <option ng-repeat="x in saloonAr">{{x}}</option>
+                            </datalist>
+                        </div>
+                        <div class="col-md-3 col-sm-12 col-xs-12 home-search-button-center">
+                            <a class="home-search-button border-white" href="" ng-click="Search()">Search</a>
+                        </div>
+                    </form>
+            </div>
+        </div>
+        </nav>
+    </div>
+    </div>
+    <div class="container-fluid  sub-header">
+        <div class="container">
+            <div class="col-md-12">
+                <a href="#" class="">
+                    <span class="mobile-icon">
+                        <i class="fas fa-mobile-alt"></i>
+                    </span>
+                    <span class="pl10">Get the App</span>
+                </a>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="col-md-12">
+            <div class="breadcrumb-sm">
+                <ul>
+                    <li>
+                        <a href="index.html">Home </a>
+                    </li>
+                    <!-- <i class="fas fa-angle-right"></i> -->
+                    <!-- <li><a href="profle.html"></a></li> -->
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div ng-controller="featCtrl">
+        <div class="container">
+            <div class="row">
+                <div class="filter">
+                    <div class="segment-bg-gray">
+                        <div class="pa10 h6-mb5">
+                            <h5>Filters
+                                <a href="" style="float: right;" ng-click="filterApply(myCheckbox)">Apply</a>
+                            </h5>
+                            <div class="form-check checkbox">
+                                <input type="checkbox" class="form-check-input" ng-model="myCheckbox.openNow">
+                                <label class="form-check-label">Open Now</label>
+                            </div>
+                            <div class="divider"></div>
+                            <div class="form-check checkbox">
+                                <input type="checkbox" class="form-check-input" ng-model="myCheckbox.rating">
+                                <label class="form-check-label" for="exampleCheck1">Rating 3.5+</label>
+                            </div>
+                            <div class="divider"></div>
+                            <div class="form-check checkbox">
+                                <input type="checkbox" class="form-check-input" ng-model="myCheckbox.female">
+                                <label class="form-check-label" for="exampleCheck2">For Females Only</label>
+                            </div>
+                            <div class="divider"></div>
+                            <div class="form-check checkbox">
+                                <input type="checkbox" class="form-check-input" ng-model="myCheckbox.male">
+                                <label class="form-check-label" for="exampleCheck1">For Males Only</label>
+                            </div>
+                            <div class="divider"></div>
+                            <div class="form-check checkbox">
+                                <input type="checkbox" class="form-check-input" ng-model="myCheckbox.homeService">
+                                <label class="form-check-label" for="exampleCheck1">Home Service Available</label>
+                            </div>
+                            <div class="divider"></div>
+                            <h5>SortBy</h5>
+                            <div class="form-check checkbox">
+                                <input type="checkbox" class="form-check-input" ng-model="myCheckbox.popularity">
+                                <label class="form-check-label">Popularity</label>
+                            </div>
+                            <div class="divider"></div>
+                            <div class="form-check checkbox">
+                                <input type="checkbox" class="form-check-input" ng-model="myCheckbox.location">
+                                <label class="form-check-label">Location</label>
+                            </div>
+                            <div class="divider"></div>
+                            <div class="form-check checkbox">
+                                <input type="checkbox" class="form-check-input" ng-model="myCheckbox.avgRating">
+                                <label class="form-check-label">Average Rating</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="featured" ng-init="feature()">
+                    <div ng-hide="mess">
+                        <h2 ng-cloak>{{message}}</div>
+                    <div class="segment-bg-gray" ng-repeat="x in featureArr">
+                        <div class="progressive_img_loaded" ng-if="x.frontPageUrl">
+                            <div id=logo>
+                                <img ng-src="http://zaloonz.in:8081/static{{x.frontPageUrl}}" class="img-fluid img-radius" />
+                            </div>
+                        </div>
+
+                        <div class="progressive_img_loaded" ng-if="!x.frontPageUrl">
+                            <img src="../../../assets/imgs/name_crop.png" class="img-fluid img-radius" />
+                        </div>
+                        <div class="row pa10">
+                            <div class="col-md-8" ng-click="getSaloonByID(x.saloonId)">
+                                <h1>
+                                    <a class="salon-name" href="" ng-cloak>{{x.saloonName}}</a>
+                                </h1>
+                                <div ng-repeat="a in x.address">
+                                    <p class="salon-location">
+                                        <span>
+                                            <a href="" ng-cloak>{{a.hno}}{{a.locality}} {{a.city}}</a>
+                                        </span>
+                                    </p>
+                                </div>
+                            </div>
+
+                            <div class="col-md-4 float-right">
+                                <div class="vote-box">
+                                    <div class="vote">4.7
+                                        <span>/5</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="divider"></div>
+                            <div class="col-md-12">
+                                <div class="post-tag" ng-cloak>{{x.saloonType}}</div>
+                                <div ng-repeat="t in x.scheduleTiming">
+                                    <div class="post-tag" ng-cloak> {{t.day}}:{{t.open}}-{{t.close}}</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div ng-show="s">
+                        <div class="segment-bg-gray" ng-repeat="x in featureArr">
+                            <div class="progressive_img_loaded" ng-if="x.frontPageUrl">
+                                <div id=logo>
+                                    <img ng-src="http://zaloonz.in:8081/static{{x.frontPageUrl}}" class="img-fluid img-radius" />
+                                </div>
+                            </div>
+
+                            <div class="progressive_img_loaded" ng-if="!x.frontPageUrl">
+                                <img src="../../../assets/imgs/name_crop.png" class="img-fluid img-radius" />
+                            </div>
+                            <div class="row pa10">
+                                <div class="col-md-8" ng-click="getSaloonByID(x.saloonId)">
+                                    <h1>
+                                        <a class="salon-name" href="" ng-cloak>{{x.saloonName}}</a>
+                                    </h1>
+                                    <div ng-repeat="a in x.address">
+                                        <p class="salon-location">
+                                            <span>
+                                                <a href="" ng-cloak>{{a.hno}}{{a.locality}} {{a.city}}</a>
+                                            </span>
+                                        </p>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-4 float-right">
+                                    <div class="vote-box">
+                                        <div class="vote">4.7
+                                            <span>/5</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="divider"></div>
+                                <div class="col-md-12">
+                                    <div class="post-tag" ng-cloak>{{x.saloonType}}</div>
+                                    <div ng-repeat="t in x.scheduleTiming">
+                                        <div class="post-tag" ng-cloak> {{t.day}}:{{t.open}}-{{t.close}}</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                </div>
+
+                <div class="trending">
+                    <div class="row">
+                        <div class="col-md-12 sponsored" ng-init="spon()">Sponsored & Popular </div>
+                        <div class="col-md-6 " ng-repeat="x in SponsArr">
+                            <div class="segment">
+                                <div class="position-r">
+                                    <div ng-if="x.frontPageUrl">
+                                        <img src="http://139.59.9.202:8081/static{{x.frontPageUrl}}" class="img-fluid sponsored-img-height" alt="">
+                                    </div>
+                                    <div ng-if="!x.frontPageUrl">
+                                        <img src="../../../assets/imgs/5.jpg" class="img-fluid sponsored-img-height" alt="">
+                                    </div>
+                                    <div class="position-a sponsored-rating">4.1</div>
+                                </div>
+                                <div class="pa10 text12 nowrap">
+                                    <a href="">{{x.saloonName}}</a>
+                                    <br>
+                                    <div ng-repeat="a in x.address">
+                                        {{a.hno}} {{a.locality}} {{a.city}}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-12" style="margin-left:394px;;">
+            <nav aria-label="...">
+                <ul class="pagination">
+                    <div ng-repeat="x in pa">
+                        <li class="page-item">
+                            <a class="page-link" ng-click="Page(x)">{{x}}</a>
+                        </li>
+                    </div>
+                </ul>
+            </nav>
+        </div>
+        <div class="container-fluid footer">
+            <div class="container">
+                <div class="mt30 mb30 text-center">
+                    <a href="">
+                        <img src="../../../assets/imgs/logo-footer.png" alt="">
+                    </a>
+                </div>
+                <div class="footer-divider"></div>
+                <div class="row">
+                    <div class="col-md-8">
+                        <ul class="footer-list">
+                            <li>
+                                <a href="/public/app/views/pages/privacypolicy.html" target="_blank">Privacy</a>
+                            </li>
+                            <li>
+                                <a href="/public/app/views/pages/terms&cond.html" target="_blank">Terms</a>
+                            </li>
+                            <li>
+                                <a href="#">Sitemap</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="col-md-4 text-right pt7">
+                        <a class="icon" href="https://www.google.com/url?q=https://www.facebook.com/zaloonz/&sa=D&source=hangouts&ust=1528619713556000&usg=AFQjCNHvPdPFfoVPv1RIx8EDWU3uTwZcuQ"
+                            target="_blank">
+                            <i class="fab fa-facebook-square"></i>
+                        </a>
+                        <a class="icon" href="https://www.google.com/url?q=https://twitter.com/zaloonz&sa=D&source=hangouts&ust=1528619713555000&usg=AFQjCNF5OgH69lXicp9_J0IKbGfyeZVOwA"
+                            target="_blank">
+                            <i class="fab fa-twitter-square"></i>
+                        </a>
+                        <a class="icon" href="https://www.google.com/url?q=https://www.instagram.com/zaloonz.in/&sa=D&source=hangouts&ust=1528619713555000&usg=AFQjCNGWpDmcMXmNuXZJDEXBpwhBpht4Zg"
+                            target="_blank">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+
+                    </div>
+                </div>
+                <div class="footer-divider"></div>
+                <div class="footer-msg">All trademarks are properties of their respective owners. © 2018- Sachi Engineering Pvt Ltd. All rights reserved.</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Place Script............................... -->
+    <script>
+        function initAutocomplete() {
+            var input = document.getElementById('pac-input');
+            var options = {
+                types: ['(cities)'],
+                componentRestrictions: {
+                    country: "in"
+                }
+            }
+            var searchBox = new google.maps.places.Autocomplete(input, options);
+
+            return;
+
+        }
+    </script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDAGh2EOR1gsTxr7GgR-W9zTgcvEqPJMVg&libraries=places&callback=initAutocomplete"
+        async defer></script>
+</body>
+
+</html>
